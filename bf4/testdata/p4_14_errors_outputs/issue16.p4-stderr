@@ -1,0 +1,20 @@
+issue16.p4:1:19: error: no include path in which to search for core.p4
+ #include <core.p4>
+                   ^
+issue16.p4:2:22: error: no include path in which to search for v1model.p4
+ #include <v1model.p4>
+                      ^
+issue16.p4(4):syntax error, unexpected IDENTIFIER "struct"
+struct
+^^^^^^
+issue16.p4(26):syntax error, unexpected UNEXPECTED_TOKEN
+    @
+    ^
+issue16.p4(27):syntax error, unexpected =, expecting {
+        actions =
+                ^
+issue16.p4(32):syntax error, unexpected =, expecting {
+        actions =
+                ^
+error: Preprocessor returned exit code 256; aborting compilation
+error: 5 errors encountered, aborting compilation

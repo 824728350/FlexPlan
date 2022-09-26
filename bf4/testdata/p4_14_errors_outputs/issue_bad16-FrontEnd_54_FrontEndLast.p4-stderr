@@ -1,0 +1,29 @@
+issue_bad16-FrontEnd_54_FrontEndLast.p4:1:19: error: no include path in which to search for core.p4
+ #include <core.p4>
+                   ^
+issue_bad16-FrontEnd_54_FrontEndLast.p4:2:22: error: no include path in which to search for v1model.p4
+ #include <v1model.p4>
+                      ^
+issue_bad16-FrontEnd_54_FrontEndLast.p4(4):syntax error, unexpected IDENTIFIER "struct"
+struct
+^^^^^^
+issue_bad16-FrontEnd_54_FrontEndLast.p4(26):syntax error, unexpected UNEXPECTED_TOKEN
+    @
+    ^
+issue_bad16-FrontEnd_54_FrontEndLast.p4(28):syntax error, unexpected UNEXPECTED_TOKEN
+    @
+    ^
+issue_bad16-FrontEnd_54_FrontEndLast.p4(30):syntax error, unexpected UNEXPECTED_TOKEN
+    @
+    ^
+issue_bad16-FrontEnd_54_FrontEndLast.p4(32):syntax error, unexpected UNEXPECTED_TOKEN
+    @
+    ^
+issue_bad16-FrontEnd_54_FrontEndLast.p4(33):syntax error, unexpected =, expecting {
+        actions =
+                ^
+issue_bad16-FrontEnd_54_FrontEndLast.p4(40):syntax error, unexpected =, expecting {
+        actions =
+                ^
+error: Preprocessor returned exit code 256; aborting compilation
+error: 8 errors encountered, aborting compilation

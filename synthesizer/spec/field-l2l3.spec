@@ -1,0 +1,12 @@
+specification {
+   // preserve processing outcome of egress_spec
+   define field_consistency_espec = {
+   $cur.in.packet == $old.in.packet;
+   $cur.in.packet == $new.in.packet; 
+   => 
+   $cur.eg.ipv4.isValid() == $new.eg.ipv4.isValid() && $cur.eg.ipv4.srcAddr == $new.eg.ipv4.srcAddr && $cur.eg.ipv4.dstAddr == $new.eg.ipv4.dstAddr && $cur.eg.ipv4.ttl == $new.eg.ipv4.ttl && $cur.eg.ipv4.totalLen == $new.eg.ipv4.totalLen && $cur.eg.ethernet.isValid() == $new.eg.ethernet.isValid() && $cur.eg.meta.l3_metadata.lkp_l4_sport == $new.eg.meta.l3_metadata.lkp_l4_sport && $cur.eg.meta.l3_metadata.lkp_l4_dport == $new.eg.meta.l3_metadata.lkp_l4_dport && $cur.eg.meta.l3_metadata.lkp_ip_ttl == $new.eg.meta.l3_metadata.lkp_ip_ttl && $cur.eg.meta.l3_metadata.lkp_ip_proto == $new.eg.meta.l3_metadata.lkp_ip_proto && $cur.eg.meta.l3_metadata.lkp_ip_ttl == $new.eg.meta.l3_metadata.lkp_ip_ttl && $cur.eg.meta.ipv4_metadata.lkp_ipv4_sa == $new.eg.meta.ipv4_metadata.lkp_ipv4_sa && $cur.eg.meta.ipv4_metadata.lkp_ipv4_da == $new.eg.meta.ipv4_metadata.lkp_ipv4_da && $cur.eg.meta.l2_metadata.lkp_mac_sa == $new.eg.meta.l2_metadata.lkp_mac_sa && $cur.eg.meta.l2_metadata.lkp_mac_da == $new.eg.meta.l2_metadata.lkp_mac_da && $cur.eg.meta.l2_metadata.l2_nexthop == $new.eg.meta.l2_metadata.l2_nexthop;
+   ||
+   $cur.eg.ipv4.isValid() == $old.eg.ipv4.isValid() && $cur.eg.ipv4.srcAddr == $old.eg.ipv4.srcAddr && $cur.eg.ipv4.dstAddr == $old.eg.ipv4.dstAddr && $cur.eg.ipv4.ttl == $old.eg.ipv4.ttl && $cur.eg.ipv4.totalLen == $old.eg.ipv4.totalLen && $cur.eg.ethernet.isValid() == $old.eg.ethernet.isValid() && $cur.eg.meta.l3_metadata.lkp_l4_sport == $old.eg.meta.l3_metadata.lkp_l4_sport && $cur.eg.meta.l3_metadata.lkp_l4_dport == $old.eg.meta.l3_metadata.lkp_l4_dport && $cur.eg.meta.l3_metadata.lkp_ip_ttl == $old.eg.meta.l3_metadata.lkp_ip_ttl && $cur.eg.meta.l3_metadata.lkp_ip_proto == $old.eg.meta.l3_metadata.lkp_ip_proto && $cur.eg.meta.l3_metadata.lkp_ip_ttl == $old.eg.meta.l3_metadata.lkp_ip_ttl && $cur.eg.meta.ipv4_metadata.lkp_ipv4_sa == $old.eg.meta.ipv4_metadata.lkp_ipv4_sa && $cur.eg.meta.ipv4_metadata.lkp_ipv4_da == $old.eg.meta.ipv4_metadata.lkp_ipv4_da && $cur.eg.meta.l2_metadata.lkp_mac_sa == $old.eg.meta.l2_metadata.lkp_mac_sa && $cur.eg.meta.l2_metadata.lkp_mac_da == $old.eg.meta.l2_metadata.lkp_mac_da && $cur.eg.meta.l2_metadata.l2_nexthop == $old.eg.meta.l2_metadata.l2_nexthop;
+   }
+   assert field_consistency_espec;
+}

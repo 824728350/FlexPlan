@@ -1,0 +1,164 @@
+pkg_info {
+  arch: "psa"
+}
+tables {
+  preamble {
+    id: 33564006
+    name: "ingress.learned_sources"
+    alias: "learned_sources"
+  }
+  match_fields {
+    id: 1
+    name: "hdr.ethernet.srcAddr"
+    bitwidth: 48
+    match_type: EXACT
+  }
+  action_refs {
+    id: 16800567
+  }
+  action_refs {
+    id: 16800063
+  }
+  size: 1024
+  idle_timeout_behavior: NOTIFY_CONTROL
+}
+tables {
+  preamble {
+    id: 33594478
+    name: "ingress.l2_tbl"
+    alias: "l2_tbl"
+  }
+  match_fields {
+    id: 1
+    name: "hdr.ethernet.dstAddr"
+    bitwidth: 48
+    match_type: EXACT
+  }
+  action_refs {
+    id: 16830849
+  }
+  action_refs {
+    id: 16800567
+  }
+  size: 1024
+  idle_timeout_behavior: NOTIFY_CONTROL
+}
+tables {
+  preamble {
+    id: 33601325
+    name: "ingress.tst_tbl"
+    alias: "tst_tbl"
+  }
+  match_fields {
+    id: 1
+    name: "meta.mac_learn_msg.ingress_port"
+    bitwidth: 32
+    match_type: EXACT
+    type_name {
+      name: "PortId_t"
+    }
+  }
+  action_refs {
+    id: 16797276
+  }
+  action_refs {
+    id: 16800567
+  }
+  size: 1024
+  idle_timeout_behavior: NOTIFY_CONTROL
+}
+actions {
+  preamble {
+    id: 16800567
+    name: "NoAction"
+    alias: "NoAction"
+  }
+}
+actions {
+  preamble {
+    id: 16800063
+    name: "ingress.unknown_source"
+    alias: "unknown_source"
+  }
+}
+actions {
+  preamble {
+    id: 16830849
+    name: "ingress.do_L2_forward"
+    alias: "do_L2_forward"
+  }
+  params {
+    id: 1
+    name: "egress_port"
+    bitwidth: 32
+    type_name {
+      name: "PortId_t"
+    }
+  }
+}
+actions {
+  preamble {
+    id: 16797276
+    name: "ingress.do_tst"
+    alias: "do_tst"
+  }
+  params {
+    id: 1
+    name: "egress_port"
+    bitwidth: 32
+    type_name {
+      name: "PortId_t"
+    }
+  }
+  params {
+    id: 2
+    name: "serEnumT"
+    bitwidth: 16
+  }
+}
+digests {
+  preamble {
+    id: 385907822
+    name: "IngressDeparserImpl.mac_learn_digest"
+    alias: "mac_learn_digest"
+  }
+  type_spec {
+    struct {
+      name: "mac_learn_digest_t"
+    }
+  }
+}
+type_info {
+  structs {
+    key: "mac_learn_digest_t"
+    value {
+      members {
+        name: "srcAddr"
+        type_spec {
+          bitstring {
+            bit {
+              bitwidth: 48
+            }
+          }
+        }
+      }
+      members {
+        name: "ingress_port"
+        type_spec {
+          new_type {
+            name: "PortId_t"
+          }
+        }
+      }
+    }
+  }
+  new_types {
+    key: "PortId_t"
+    value {
+      translated_type {
+        uri: "p4.org/psa/v1/PortId_t"
+        sdn_bitwidth: 32
+      }
+    }
+  }
+}
